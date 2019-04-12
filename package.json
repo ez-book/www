@@ -21,5 +21,8 @@
   "homepage": "https://github.com/ez-book/www#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.3"
+  },
+  "dependencies": {
+    "query-string": "^6.4.2"
   }
 }

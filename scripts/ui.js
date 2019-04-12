@@ -23,29 +23,34 @@ const ui = {
     $button.search.classList.add("hidden");
     $button.book.classList.add("hidden");
   },
-  generate: ({ text, data }) => {
+  generate: ({ text, places, hotels }) => {
     $loading.classList.add("hidden");
     $text.innerText = text;
     $places.innerHTML = "";
-    $places.innerHTML = data && data.places
-      .map(place => `
+    $places.innerHTML = places
+      .map(
+        (place, i) => `
         <li class="place">
-          <span class="place-name">${place}<span>
+          <span class="place-name">${place}</span>
+          <ul class="hotels">
+            ${hotels &&
+              hotels[i].result &&
+              hotels[i].result
+                .map(
+                  hotel => `
+              <li class="hotel">
+                <span class="hotel-name">${hotel.hotel_data.name}</span>
+              </li>
+            `
+                )
+                .join("")}
+          </ul>
         </li>
-      `)
+      `
+      )
       .join("");
     $button.search.classList.remove("hidden");
     $button.book.classList.add("hidden");
-
-    // Make the list sortable
-    const sortable = new Sortable.default($places, {
-      draggable: ".place"
-    });
-
-    sortable.on("sortable:start", () => console.log("sortable:start"));
-    sortable.on("sortable:sort", () => console.log("sortable:sort"));
-    sortable.on("sortable:sorted", () => console.log("sortable:sorted"));
-    sortable.on("sortable:stop", () => console.log("sortable:stop"));
   }
 };
 

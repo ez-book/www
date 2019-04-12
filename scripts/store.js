@@ -6,6 +6,8 @@ export const createStore = (initialState = {}, reducer) => {
   return {
     dispatch: action => {
       state = reducer(action, state);
+      console.log(state);
+      if(action && action.request) action.request(); // Manual redux-thunk FTW!
       updateUI(state); // Let's just make our lives simple here!
     },
     getState: _ => state

@@ -53,16 +53,21 @@ main {
     list-style: none;
   }
     main .places .place {
-      margin: 4px 0;
-      padding: 8px;
-      width: 100%;
-      background-color: var(--color-white);
-      border: 1px solid var(--color-grey);
-      text-transform: capitalize;
+      margin: 0;
+      padding: 0;
+      width: calc(100% - 18px);
+    }
+    main .places .place.closed .hotels {
+      display: none;
     }
       main .places .place .place-name {
+        margin: 4px 0;
+        padding: 8px;
+        background-color: var(--color-white);
+        border: 1px solid var(--color-grey);
+        text-transform: capitalize;
         display: block;
-        width: 100%;
+        width: 75vw;
       }
 
   /* LOADING BY Basti (https://codepen.io/basti_s/pen/ZbEZpE) */
