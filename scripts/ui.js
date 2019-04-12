@@ -42,8 +42,8 @@ const ui = {
             }"/>
           </span>
           <ul class="hotels">
-            ${hotels &&
-              hotels[i].result &&
+            ${(hotels &&
+              hotels[i].result) ?
               hotels[i].result
                 .map(
                   hotel => `
@@ -52,14 +52,20 @@ const ui = {
               </li>
             `
                 )
-                .join("")}
+                .join("") : ''}
           </ul>
         </li>
       `
       )
       .join("");
-    $button.search.classList.remove("hidden");
-    $button.book.classList.add("hidden");
+
+    if (hotels && hotels.length === places.length) {
+      $button.search.classList.add("hidden");
+      $button.book.classList.remove("hidden");
+    } else {
+      $button.search.classList.remove("hidden");
+      $button.book.classList.add("hidden");
+    }
 
     // Initialise date picker
     flatpickr(".date", { mode: "range", minDate: "today" });
