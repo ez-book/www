@@ -2,10 +2,27 @@
   <head>
     <title>EZ Book | Itinerary Generation, One-Click Booking</title>
 
-    <link rel="stylesheet" href="src/main.styl">
+    <link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
-    <main></main>
-    <script src="./index.js"></script>
+    <header class="header">
+      <img src="" alt="logo" class="logo"/>
+      <span class="title">EZ Book</span>
+    </header>
+    <main class="main">
+      <p class="intro">Welcome to EZ Book! You can visualise and update your itinerary, search for hotel availabilities and book in one click!</p>
+      <div class="loading">
+        <div id="loading-pin"></div>
+        <div id="loading-shadow"></div>
+      </div>
+      <p class="text"></p>
+      <ul class="places"></ul>
+      <button class="main-action" id="search"><span class="search">Search</span></button>
+      <button class="main-action" id="book"><span class="book">Book</span></button>
+    </main>
+    <footer class="footer">
+      Made with ♥ by Dilla, Elston, Adarsh and Antonio
+    </footer>
+    <script src="scripts/main.js"></script>
   </body>
 </html>

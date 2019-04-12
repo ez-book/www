@@ -1,0 +1,205 @@
+/* -- VARIABLES -- */
+:root {
+  --color-primary: #003580;
+  --color-secondary: #009FE3;
+  --color-complementary: #FABE02;
+  --color-grey: #7C90A6;
+  --color-black: #1C1C1C;
+  --color-white: #F1F1F1;
+
+  --padding: 18px;
+}
+
+/* -- GLOBALS -- */
+.hidden {
+  display: none;
+}
+
+/* -- BODY -- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-white);
+}
+
+/* -- HEADER -- */
+header {
+  background-color: var(--color-primary);
+  border-bottom: 8px solid var(--color-complementary);
+  color: var(--color-white);
+  padding: var(--padding);
+}
+  header .title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+/* -- MAIN -- */
+main {
+  color: var(--color-black);
+  padding: var(--padding);
+  font-size: 14px;
+  min-height: calc(100vh - 150px);
+  max-width: 75vw;
+  margin: auto;
+}
+  main .text {
+    margin: 0;
+  }
+  main .places {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+    main .places .place {
+      margin: 4px 0;
+      padding: 8px;
+      width: 100%;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-grey);
+      text-transform: capitalize;
+    }
+      main .places .place .place-name {
+        display: block;
+        width: 100%;
+      }
+
+  /* LOADING BY Basti (https://codepen.io/basti_s/pen/ZbEZpE) */
+  main .loading {
+
+  }
+    main .loading #loading-pin {
+      background-color: var(--color-primary);
+      width: 30px;
+      height: 30px;
+      transform: rotate(-45deg);
+      border-radius: 80px 80px 80px 0;
+      margin-bottom: 10px;
+      animation: bounce 1s infinite;
+      left: 50%;
+      margin: 16px auto 0;
+    }
+      main .loading #loading-pin:after {
+        border-radius: 50px;
+        content: '';
+        height: 6px;
+        left: 50%;        
+        margin-left: -3px;
+        margin-top: -3px;
+        position: absolute;
+        top: 50%;
+        background-color: var(--color-white);
+        width: 6px;
+      }
+  
+    main .loading #loading-shadow {
+      background-color: var(--color-grey);
+      width: 30px;
+      height: 30px;
+      border-radius: 80px;
+      margin-bottom: 30px;
+      animation: bounce-shadow 1s infinite;
+      margin: -5px auto 0;
+    }
+  
+    @keyframes bounce {
+      0% {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+      40% {
+        filter: none;
+        transform: translateY(0px) rotate(-45deg);
+      }
+      100% {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+    }
+  
+    @keyframes bounce-shadow {
+      0% {
+        transform: rotateX(70deg) scale(0.5);
+      }
+      40% {
+        filter: none;
+        transform: rotateX(80deg) scale(0.2);
+      }
+      100% {
+        transform: rotateX(70deg) scale(0.5);
+      }
+    }
+  /* END LOADING */  
+  /* BUTTON BY Sébastien Jean (https://codepen.io/sebj54/pen/oxluI/) */
+  main button {
+    position: relative;  
+    display: block;
+    margin: 0px auto;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    color: var(--color-white);
+    transition: background-color .3s;
+    width: 100%;
+  }
+
+  main button > * {
+    position: relative;
+  }
+  
+    main button span {
+      display: block;
+      padding: 8px;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  
+    main button:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 0;
+      padding-top: 0;
+      border-radius: 100%;
+      background-color: rgba(236, 240, 241, .3);
+      transform: translate(-50%, -50%);
+    }
+  
+    main button:active:before {
+      width: 120%;
+      padding-top: 120%;
+      transition: width .2s ease-out, padding-top .2s ease-out;
+    }
+  /* END BUTTON */
+
+    main button.main-action {
+      flex-grow: 2;
+      background-color: var(--color-primary);
+    }
+      main button.main-action:hover,
+      main button.main-action:focus {
+        background-color: var(--color-primary);
+      }
+    main button.secondary-action {
+      flex-grow: 1;
+      margin-left: 8px;
+      background-color: var(--color-complementary);
+    }
+      main button.secondary-action:hover,
+      main button.secondary-action:focus {
+        background-color: var(--color-complementary);
+      }
+
+/* -- FOOTER -- */
+footer {
+  padding: var(--padding);
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  text-align: center;
+}
+  
