@@ -1,3 +1,5 @@
+import flatpickr from "flatpickr";
+
 // Define DOM elements
 const $loading = document.querySelector(".loading");
 const $text = document.querySelector(".text");
@@ -6,6 +8,8 @@ const $button = {
   search: document.querySelector("#search"),
   book: document.querySelector("#book")
 };
+
+const datepickerRanOnce = false;
 
 // UI = f(state)
 const ui = {
@@ -23,15 +27,20 @@ const ui = {
     $button.search.classList.add("hidden");
     $button.book.classList.add("hidden");
   },
-  generate: ({ text, places, hotels }) => {
+  generate: ({ text, places, hotels, dates }) => {
     $loading.classList.add("hidden");
-    $text.innerText = text;
+    $text.innerHTML = text ? text : "";
     $places.innerHTML = "";
     $places.innerHTML = places
       .map(
         (place, i) => `
-        <li class="place">
-          <span class="place-name">${place}</span>
+        <li class="place closed">
+          <span class="place-name">
+            ${place}
+            <input type="text" class="date" data-index="${i}" placeholder="Select the dates ..." value="${
+              dates && dates[i] ? dates[i].join(" to ") : ""
+            }"/>
+          </span>
           <ul class="hotels">
             ${hotels &&
               hotels[i].result &&
@@ -39,7 +48,7 @@ const ui = {
                 .map(
                   hotel => `
               <li class="hotel">
-                <span class="hotel-name">${hotel.hotel_data.name}</span>
+                <span class="hotel-name">${hotel.hotel_name}</span>
               </li>
             `
                 )
@@ -51,6 +60,9 @@ const ui = {
       .join("");
     $button.search.classList.remove("hidden");
     $button.book.classList.add("hidden");
+
+    // Initialise date picker
+    flatpickr(".date", { mode: "range", minDate: "today" });
   }
 };
 

@@ -57,17 +57,28 @@ main {
       padding: 0;
       width: calc(100% - 18px);
     }
-    main .places .place.closed .hotels {
-      display: none;
-    }
+      main .places .place .date {
+        background: none;
+        color: var(--color-grey);
+        display: block;
+        width: 150px;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid var(--color-grey);
+        text-align: center;
+      }
+      main .places .place.closed .hotels {
+        display: none;
+      }
       main .places .place .place-name {
         margin: 4px 0;
         padding: 8px;
         background-color: var(--color-white);
         border: 1px solid var(--color-grey);
         text-transform: capitalize;
-        display: block;
-        width: 75vw;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
       }
 
   /* LOADING BY Basti (https://codepen.io/basti_s/pen/ZbEZpE) */
