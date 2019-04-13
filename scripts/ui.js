@@ -9,8 +9,6 @@ const $button = {
   book: document.querySelector("#book")
 };
 
-const datepickerRanOnce = false;
-
 // UI = f(state)
 const ui = {
   loading: _ => {
@@ -44,11 +42,30 @@ const ui = {
           <ul class="hotels">
             ${(hotels &&
               hotels[i].result) ?
-              hotels[i].result
+              hotels[i].result.slice(0, 1)
                 .map(
                   hotel => `
               <li class="hotel">
-                <span class="hotel-name">${hotel.hotel_name}</span>
+                <img src="${hotel.hotel_data.hotel_photos[0].url_square60}" alt="${hotel.hotel_name}" class="picture" />
+                <span class="hotel-info">
+                  <span class="hotel-name">${hotel.hotel_name}</span>
+                  <span class="hotel-address">${hotel.address}</span>
+                  <span class="hotel-stars">
+                    ${Array
+                      .from({ length: parseInt(hotel.stars, 10)})
+                      .map(_ => `★`).join("")}
+                  </span>
+                </span>
+                <span class="booking-info">
+                  <span class="hotel-review">
+                    <span class="hotel-review-number">${hotel.review_score}</span>
+                    <span class="hotel-review-text">${hotel.review_score_word}</span>
+                  </span>
+                  <span class="booking-price">
+                    <span class="booking-price-number">${hotel.price}</span>
+                    <span class="booking-price-currency">${hotel.hotel_currency_code}</span>
+                  </span>
+                </span>
               </li>
             `
                 )

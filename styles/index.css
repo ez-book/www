@@ -32,7 +32,8 @@ header {
   header .title {
     font-size: 16px;
     font-weight: 500;
-    margin: 0;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
 /* -- MAIN -- */
@@ -41,7 +42,7 @@ main {
   padding: var(--padding);
   font-size: 14px;
   min-height: calc(100vh - 150px);
-  max-width: 75vw;
+  max-width: 500px;
   margin: auto;
 }
   main .text {
@@ -67,9 +68,6 @@ main {
         border-bottom: 1px solid var(--color-grey);
         text-align: center;
       }
-      main .places .place.closed .hotels {
-        display: none;
-      }
       main .places .place .place-name {
         margin: 4px 0;
         padding: 8px;
@@ -80,10 +78,59 @@ main {
         justify-content: space-between;
         width: 100%;
       }
+        main .places .place .place-name:hover {
+          cursor: pointer;
+        }
+      main .places .place.closed .hotels {
+        display: none;
+      }
+      main .places .place .hotels {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+        main .places .place .hotels .hotel {
+          display: flex;
+          margin: 8px;
+          /* border: 1px solid var(--color-grey); */
+        }
+          main .places .place .hotels .hotel .hotel-info {
+            margin-left: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            flex-grow: 1;
+          }
+            main .places .place .hotels .hotel .hotel-info .hotel-address {
+              color: var(--color-grey);
+            }
+            main .places .place .hotels .hotel .hotel-info .hotel-stars {
+              color: var(--color-complementary);
+            }
+          main .places .place .hotels .hotel .booking-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-right: 8px;
+          }
+            .hotel-review {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+              .hotel-review-number {
+                font-size: 18px;
+                font-weight: 600;
+                color: var(--color-primary)
+              }
+              .hotel-review-text {
+                color: var(--color-grey)
+              }
 
   /* LOADING BY Basti (https://codepen.io/basti_s/pen/ZbEZpE) */
   main .loading {
-
+    margin-top: 40%;
   }
     main .loading #loading-pin {
       background-color: var(--color-primary);
