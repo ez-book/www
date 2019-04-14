@@ -27,7 +27,10 @@ document.addEventListener("click", e => {
   }
 
   // Search hotels for an itinerary
-  if (e.target && e.target.id === "search") {
+  if (
+    e.target &&
+    (e.target.id === "search" || e.target.classList.contains("search"))
+  ) {
     console.log("search");
     const state = store.getState();
 
@@ -45,10 +48,12 @@ document.addEventListener("click", e => {
           )
         )
           .then(data => {
-            store.dispatch({ type: "SUCCESS", payload: { hotels: data } })
-            new Array().forEach.call(document.querySelectorAll('.place.closed'), el => el.classList.remove('closed'))
-          }
-          )
+            store.dispatch({ type: "SUCCESS", payload: { hotels: data } });
+            new Array().forEach.call(
+              document.querySelectorAll(".place.closed"),
+              el => el.classList.remove("closed")
+            );
+          })
           .catch(_ => store.dispatch({ type: "ERROR" }));
       }
     });
@@ -56,7 +61,10 @@ document.addEventListener("click", e => {
   }
 
   // Book an itinerary
-  if (e.target && e.target.id === "book") {
+  if (
+    e.target &&
+    (e.target.id === "book" || e.target.classList.contains("book"))
+  ) {
     store.dispatch({ type: "LOADING" });
     console.log("book");
   }
