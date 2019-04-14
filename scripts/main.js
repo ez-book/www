@@ -18,7 +18,6 @@ store.dispatch({ type: "INIT" });
 document.addEventListener("click", e => {
   // Toggle city list info
   if (e.target && e.target.classList.contains("place-name")) {
-    console.log(e.target.classList);
     if (e.target.parentNode.classList.contains("closed")) {
       e.target.parentNode.classList.remove("closed");
     } else {
@@ -31,13 +30,11 @@ document.addEventListener("click", e => {
     e.target &&
     (e.target.id === "search" || e.target.classList.contains("search"))
   ) {
-    console.log("search");
     const state = store.getState();
 
     store.dispatch({
       type: "LOADING",
       request: () => {
-        console.log("request");
         Promise.all(
           state.places.map((place, i) =>
             fetch(
@@ -57,7 +54,6 @@ document.addEventListener("click", e => {
           .catch(_ => store.dispatch({ type: "ERROR" }));
       }
     });
-    console.log("search");
   }
 
   // Book an itinerary
@@ -66,16 +62,14 @@ document.addEventListener("click", e => {
     (e.target.id === "book" || e.target.classList.contains("book"))
   ) {
     store.dispatch({ type: "LOADING" });
-    console.log("book");
+    // TODO
   }
 });
 
 document.addEventListener("change", e => {
-  console.log(e);
   if (e.target && e.target.classList.contains("date")) {
     const dates = e.target.value.split(" to ");
     const index = parseInt(e.target.dataset.index, 10);
-    console.log({ dates, index });
     if (dates.length === 2) {
       const state = store.getState();
 
